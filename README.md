@@ -33,7 +33,8 @@ Of course, one needs to be cautious of the fact that short scales may also be th
 
 # Two important methodological questions
 - which scales/subscale to use as predictors in addition to background factors
-- is it better to try and predict the final score or when the scale has multi-dimensions, the score at each subscale. It might be more precise to do the latter.
+- is it better to try and predict the final score or when the scale has multi-dimensions, the score at each subscale. It might be more precise to do the latter
+- for the STORI, this is equivalent to predict a score at each sub-scale and then "vote for" the recovery stage based on the higher score
  
 # Predictive power of each feature  
 The influence of each feature for each participants will be calculated using SHAP value and R packages _fastshap_ and _shapviz_.
