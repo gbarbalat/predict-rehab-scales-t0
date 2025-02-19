@@ -4,7 +4,7 @@ project led by Anaid Perez
 In our network of psych rehab centers, nurses collect a whole bunch of data which can be time-consuming.   
 8 rehab outcome measures are meant to be routinely collected which can be redundant and cumbersome, frustrate patients and clinicians.  
 The aim of this project is to see if it is possible to ease data collection by predicting scores on some of the scales based on background factors and scores on other scales.  
-For instance, the STages of Recovery Instrument is a 50-items self-questionaire which may be predicted by shorter scales such as the WEMWBS (well-being - 14 items), the MARS (medication adherence - 10 items), and the SQoL (quality of life - 18 items). If a model has a good predictive ability to predict scores at the STORI based on (some of) these scales, then this would ease the nurses' work, and save them some time to work on other things (e.g. other research projects!). Conversely, a predictive model may not have good predictive accuracy and therefore clinicians may be better off collecting this scale directly.
+For instance, the STages of Recovery Instrument is a 50-items self-questionaire which may be predicted by shorter scales such as the WEMWBS (well-being - 14 items), the MARS (medication adherence - 10 items), and the SQoL (quality of life - 18 items). If a model demonstrates good predictive ability for STORI scores based on (some of) these other scales, it could significantly streamline nurses' work, allowing them to allocate time to other important tasks (e.g., research projects or direct patient care). Conversely, if a predictive model shows poor accuracy, clinicians would be better advised to continue collecting STORI data directly. The decision to use a predictive model versus direct data collection should be based on a careful evaluation of the model's performance, considering both its benefits (time-saving) and potential drawbacks (reduced accuracy).
 
 # Which scales to predict?  
 One wishes to predict scales that are time-consuming, cumbersome, and hetero-questionnaires.  
@@ -38,3 +38,7 @@ Of course, one needs to be cautious of the fact that short scales may also be th
  
 # Predictive power of each feature  
 The influence of each feature for each participants will be calculated using SHAP value and R packages _fastshap_ and _shapviz_.
+
+# Start with 
+- predicting the STORI sub-scores
+- with the SQoL and the ISMI but which dimensions?
