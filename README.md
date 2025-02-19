@@ -2,9 +2,9 @@
 project led by Anaid Perez
 
 In our network of psych rehab centers, nurses collect a whole bunch of data which can be time-consuming.   
-8 measures are collected which can be redundant and cumbersome, frustrate patients and clinicians.  
+8 rehab outcome measures are meant to be routinely collected which can be redundant and cumbersome, frustrate patients and clinicians.  
 The aim of this project is to see if it is possible to ease data collection by predicting scores on some of the scales based on background factors and scores on other scales.  
-For instance, the STages of Recovery Instrument is a 50-items self-questionaire which may be predicted by shorter scales such as the WEMWBS (well-being - 14 items), the MARS (medication adherence - 10 items), and the SQoL (quality of life - 18 items). If a model has a good predictive ability to predict scores at the STORI based on (some of) these scales, then this would ease the nurses' work, and give them some time to work on other things (e.g. other research projects). Conversely, a predictive model may not have good predictive accuracy and therefore clinicians may be better off collecting this scale directly.
+For instance, the STages of Recovery Instrument is a 50-items self-questionaire which may be predicted by shorter scales such as the WEMWBS (well-being - 14 items), the MARS (medication adherence - 10 items), and the SQoL (quality of life - 18 items). If a model has a good predictive ability to predict scores at the STORI based on (some of) these scales, then this would ease the nurses' work, and save them some time to work on other things (e.g. other research projects!). Conversely, a predictive model may not have good predictive accuracy and therefore clinicians may be better off collecting this scale directly.
 
 # Which scales to predict?  
 One wishes to predict scales that are time-consuming, cumbersome, and hetero-questionnaires.  
@@ -22,24 +22,18 @@ One wishes to use scales that are quick and acceptable, e.g.
 - the MARS (medication adherence - 10 items)
 - the WEMWBS and the SQoL
 Of course, one needs to be cautious of the fact that short scales may also be the ones with the least predictive power...
+- it may be more accurate to predict with sub-scales rather than total scores
+- including sub-scales of the STORI itself to predict other sub-scales
 
 # How to predict?    
-- We'll use an ensemble of machine learning algorithms, e.g. SuperLearner of  
-SL.library <- list("SL.mean",
-                   c("SL.caret.xgboost", "All", "screen.mixed", "screen.randomForest"),
-                   c("SL.caret.ranger", "All","screen.mixed",  "screen.randomForest"),
-                   #c("SL.rpart", "All","screen.mixed",   "screen.randomForest"),#bratMachine not working with caret, rpart with very low predictive accucary
-                   #c("SL.caret.ksvm", "All","screen.mixed",  "screen.randomForest"),#pbs with predictions in caret
-                   c("SL.caret.naive_bayes", "All", "screen.mixed", "screen.randomForest"),
-                   #c("SL.caret.earth", "All", "screen.mixed", "screen.randomForest"),#if continuous predictors
-                   c("SL.caret.glm", "All", "screen.mixed", "screen.randomForest"),
-                   c("SL.caret.step.interaction", "screen.mixed", "screen.randomForest"),#,
-                   c("SL.caret.glmnet", "All", "screen.mixed",  "screen.randomForest"))
-  - We'll use caret _adaptive_ strategy to find the best set of hyperparameters for each algorithm
-  - For each predicted scale, we'll find features of patients with poor prediction
-  - Missing data will be imputed using the R package _mice_ (multiple imputation) so we'll get a range of predictive accuracies among all the imputed datasets
-  - One important methodological question will be whether we'll try and predict the final score or when the scale has multi-dimensions, the score at each subscale. It might be more precise to do the latter. This needs to be investigated further.
+- We'll use an ensemble of machine learning algorithms,
+- We'll use caret _adaptive_ strategy to find the best set of hyperparameters for each algorithm
+- For each predicted scale, we'll find features of patients with poor prediction (if present, these features will lead us to say that this patient might be better off with the score being actually calculated from the scale itself rather than predicted)
+- Missing data will be imputed using the R package _mice_ (multiple imputation) so we'll get a range of predictive accuracies among all the imputed datasets
+
+# Two important methodological questions
+- which scales/subscale to use as predictors in addition to background factors
+- is it better to try and predict the final score or when the scale has multi-dimensions, the score at each subscale. It might be more precise to do the latter.
  
 # Predictive power of each feature  
 The influence of each feature for each participants will be calculated using SHAP value and R packages _fastshap_ and _shapviz_.
-
