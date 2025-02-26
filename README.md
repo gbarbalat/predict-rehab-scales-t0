@@ -19,13 +19,12 @@ Scales that would be prone to being predicted rather than actually collected may
 From discussion with clinicians, we found out that the STORI may be the most important to predict given its length.
 
 # Which scales to use as predictors?  
-One wishes to use scales that are quick and acceptable, e.g.  
 - the BIS (insight - 8 items)
 - the MARS (medication adherence - 10 items)
 - the SQoL (quality of life - 18 items and 8 sub-scores)
 - the SERS (self-esteem - 20 items)
 - the ISMI (self-stigmatisation - 29 items)
-- We'll leave out the EAS (only used in France), the WEMWBS (may be redundant with the SQoL)
+- We'll leave out the EAS (only used in France, may not be informative for non-French individuals), the WEMWBS (may be redundant with the SQoL)
 Of course, one needs to be cautious of the fact that short scales may also be the ones with the least predictive power...
 - it may be more accurate to predict with sub-scales rather than total scores
 - we will not predict sub-scales of the STORI using other sub-scales of the STORI as it is too far from our research question (it would require to change the STORI substantially)
@@ -45,7 +44,3 @@ Of course, one needs to be cautious of the fact that short scales may also be th
  
 # Predictive power of each feature  
 The influence of each feature for each participants will be calculated using SHAP value and R packages _fastshap_ and _shapviz_.
-
-# Start with 
-- predicting the STORI sub-scores
-- with the SQoL and the ISMI but which dimensions?
