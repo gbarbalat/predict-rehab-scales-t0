@@ -14,27 +14,34 @@ Scales that would be prone to being predicted rather than actually collected may
 - the EAS (which is a hetero-questionnaire evaluating autonomy)
 - the SERS (self-esteem - 20 items) may be redundant with the SQoL (quality of life - 18 items), which contains a self-esteem dimension
 - the WEMWBS (well-being - 14 items) may also be redundant with the SQoL, which contains a physical and psychological well-being dimension
-From discussion with clinicians, we found out that xxxx put here scales that are actually liked and disliked by clinicians.   
+
+
+From discussion with clinicians, we found out that the STORI may be the most important to predict given its length.
 
 # Which scales to use as predictors?  
 One wishes to use scales that are quick and acceptable, e.g.  
 - the BIS (insight - 8 items)
 - the MARS (medication adherence - 10 items)
-- the WEMWBS and the SQoL
+- the SQoL (quality of life - 18 items and 8 sub-scores)
+- the SERS (self-esteem - 20 items)
+- the ISMI (self-stigmatisation - 29 items)
+- We'll leave out the EAS (only used in France), the WEMWBS (may be redundant with the SQoL)
 Of course, one needs to be cautious of the fact that short scales may also be the ones with the least predictive power...
 - it may be more accurate to predict with sub-scales rather than total scores
-- including sub-scales of the STORI itself to predict other sub-scales
+- we will not predict sub-scales of the STORI using other sub-scales of the STORI as it is too far from our research question (it would require to change the STORI substantially)
 
 # How to predict?    
 - We'll use an ensemble of machine learning algorithms,
 - We'll use caret _adaptive_ strategy to find the best set of hyperparameters for each algorithm
-- For each predicted scale, we'll find features of patients with poor prediction (if present, these features will lead us to say that this patient might be better off with the score being actually calculated from the scale itself rather than predicted)
+- For each predicted scale (sub-scale of the STORI), we'll find features of patients with poor prediction (if present, these features will lead us to say that this patient might be better off with the score being actually calculated from the scale itself rather than predicted)
+- We'll try a model including 5 scales mentioned above (BIS, MARS, SQoL, SERS, ISMI) and leave out one scale at a time to see how the predictive accuracy changes.
+- We'll aim for the minimum number of scales in the predictive model while maintaining a decent predictive accuracy (e.g. AUC>0.8)
 - Missing data will be imputed using the R package _mice_ (multiple imputation) so we'll get a range of predictive accuracies among all the imputed datasets
 
 # Two important methodological questions
-- which scales/subscale to use as predictors in addition to background factors
 - is it better to try and predict the final score or when the scale has multi-dimensions, the score at each subscale. It might be more precise to do the latter
 - for the STORI, this is equivalent to predict a score at each sub-scale and then "vote for" the recovery stage based on the higher score
+- As mentioned above, we might want to predict scores on other scales 
  
 # Predictive power of each feature  
 The influence of each feature for each participants will be calculated using SHAP value and R packages _fastshap_ and _shapviz_.
