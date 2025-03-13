@@ -7,7 +7,7 @@ The aim of this project is to see if it is possible to ease data collection by p
 For instance, the STages of Recovery Instrument is a 50-items self-questionaire which may be predicted by shorter scales such as the MARS (medication adherence - 10 items), and the SQoL (quality of life - 18 items). If a model demonstrates good predictive ability for STORI scores based on (some of) these other scales, it could significantly streamline nurses' work, allowing them to allocate time to other important tasks (e.g., research projects or direct patient care). Conversely, if a predictive model shows poor accuracy, clinicians would be better advised to continue collecting STORI data directly. The decision to use a predictive model versus direct data collection should be based on a careful evaluation of the model's performance, considering both its benefits (time-saving) and potential drawbacks (reduced accuracy).
 
 # Which scales to predict?  
-One wishes to predict scales that are time-consuming, cumbersome, and hetero-questionnaires.  From discussion with clinicians, we found out that the STORI may be the most important to predict given its length.
+One wishes to predict scales that are time-consuming and cumbersome.  From discussion with clinicians, we found out that the STORI may be the most important to predict given its length.
 
 Other scales would be prone to being predicted rather than actually collected:  
 - the STORI (recovery - 50 items)
